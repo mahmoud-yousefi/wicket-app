@@ -1,0 +1,34 @@
+# IDE Files
+.vscode/
+.idea/
+*.iml
+*.iws
+*.ipr
+
+# Build Output
+target/
+
+# Generated Files
+*.class
+*.jar
+*.war
+
+# Logs
+logs/
+*.log
+
+# Temporary Files
+*.tmp
+*.swp
+.DS_Store
+
+# Maven Repository
+.m2/
+
+# Environment-Specific Files
+env/
+local.properties
+
+# Miscellaneous
+*.pid
+*.lock
