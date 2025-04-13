@@ -8,6 +8,9 @@ import org.apache.wicket.markup.html.form.Form;
 public class HomePage extends WebPage {
 
     public HomePage() {
+        String nonce = ((WicketApplication) getApplication()).generateNonce();
+        add(new Label("nonce", nonce));
+
         String token = (String) getSession().getAttribute("token");
 
         if (token == null || !JwtUtil.validateToken(token)) {
