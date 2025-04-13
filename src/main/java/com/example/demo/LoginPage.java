@@ -16,9 +16,9 @@ public class LoginPage extends WebPage {
             @Override
             protected void onSubmit() {
                 if ("admin".equals(username) && "password".equals(password)) {
-                    String token = JwtUtil.generateToken(username); // Generate JWT token
-                    getSession().setAttribute("token", token); // Store token in session
-                    setResponsePage(HomePage.class); // Redirect to homepage
+                    String token = JwtUtil.generateToken(username);
+                    getSession().setAttribute("token", token);
+                    setResponsePage(HomePage.class);
                 } else {
                     error("Invalid credentials");
                 }

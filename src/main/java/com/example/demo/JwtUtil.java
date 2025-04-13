@@ -9,15 +9,15 @@ import com.auth0.jwt.interfaces.DecodedJWT;
 
 public class JwtUtil {
 
-    private static final String SECRET_KEY = "your-secret-key"; // Replace with a secure key
-    private static final long EXPIRATION_TIME = 3600 * 1000; // 1 hour
+    private static final String SECRET_KEY = "your-secret-key";
+    private static final long EXPIRATION_TIME = 3600 * 1000;
 
     public static String generateToken(String username) {
         return JWT.create()
                 .withSubject(username)
                 .withIssuedAt(new Date())
                 .withExpiresAt(new Date(System.currentTimeMillis() + EXPIRATION_TIME))
-                .sign(Algorithm.HMAC256(SECRET_KEY)); // Use HMAC256 algorithm for signing
+                .sign(Algorithm.HMAC256(SECRET_KEY)); 
     }
 
     public static boolean validateToken(String token) {
