@@ -8,16 +8,16 @@ import org.apache.wicket.model.PropertyModel;
 
 @SuppressWarnings("unused")
 public class LoginPage extends WebPage {
-    private String username; 
+    private String username;
     private String password;
 
     public LoginPage() {
-        Form<Void> loginForm = new Form<Void>("loginForm") {
+        Form<Void> loginForm = new Form<>("loginForm") {
             @Override
             protected void onSubmit() {
-                // Simple authentication logic
                 if ("admin".equals(username) && "password".equals(password)) {
-                    getSession().setAttribute("username", username); // Store username in session
+                    String token = JwtUtil.generateToken(username); // Generate JWT token
+                    getSession().setAttribute("token", token); // Store token in session
                     setResponsePage(HomePage.class); // Redirect to homepage
                 } else {
                     error("Invalid credentials");

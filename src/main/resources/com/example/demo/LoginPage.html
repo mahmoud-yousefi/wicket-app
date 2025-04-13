@@ -1,18 +1,23 @@
 <!DOCTYPE html>
 <html xmlns:wicket="http://wicket.apache.org">
-<head>
-    <title>Login Page</title>
-</head>
-<body>
-    <h1>Login</h1>
-    <form wicket:id="loginForm">
-        <label>Username:</label>
-        <input type="text" wicket:id="username" />
-        <br />
-        <label>Password:</label>
-        <input type="password" wicket:id="password" />
-        <br />
-        <button type="submit">Login</button>
-    </form>
-</body>
+    <head>
+        <title>Login Page</title>
+        <link rel="stylesheet" type="text/css" href="com/example/demo/style.css"/>
+    </head>
+    <body>
+        <div class="container">
+            <h1>Login</h1>
+            <form wicket:id="loginForm">
+                <label>Username:</label>
+                <input type="text" wicket:id="username"
+                    placeholder="Enter your username" />
+
+                <label>Password:</label>
+                <input type="password" wicket:id="password"
+                    placeholder="Enter your password" />
+
+                <button type="submit">Login</button>
+            </form>
+        </div>
+    </body>
 </html>
