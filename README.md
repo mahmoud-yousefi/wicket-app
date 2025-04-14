@@ -1,7 +1,3 @@
-To include instructions on how to log in, you can extend the documentation by adding a **"Login Process"** section. Here's how you can integrate it into your existing instructions:
-
----
-
 ## How to Run the Application
 
 1. **Build the Project**:
@@ -28,6 +24,31 @@ To include instructions on how to log in, you can extend the documentation by ad
    ```
 
 ---
+
+## Run with Docker
+
+1. **Build the Docker Image**:
+   After building the project with Maven, create a Docker image for the application:
+   ```bash
+   docker build -t wicket-app .
+   ```
+
+2. **Run the Docker Container**:
+   Start the application in a Docker container:
+   ```bash
+   docker run -d -p 8080:8080 --name wicket-app-container wicket-app
+   ```
+
+3. **Access the Application**:
+   Open your browser and navigate to:
+   ```
+   http://localhost:8080/wicket-app
+   ```
+
+   To see front-end using React, navigate to:
+   ```
+   http://localhost:8080/wicket-app/front-end
+   ```
 
 ## Login Process
 
