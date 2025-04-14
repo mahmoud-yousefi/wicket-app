@@ -24,24 +24,17 @@ public class CorsFilter implements Filter {
         HttpServletRequest httpRequest = (HttpServletRequest) request;
         HttpServletResponse httpResponse = (HttpServletResponse) response;
 
-        // Allow requests from the React app's origin
-        httpResponse.setHeader("Access-Control-Allow-Origin", "http://localhost:8080/wicket-app/front-end/");
+        httpResponse.setHeader("Access-Control-Allow-Origin", "http://localhost:8080");
         httpResponse.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
         httpResponse.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
         httpResponse.setHeader("Access-Control-Allow-Credentials", "true");
 
-        // Handle preflight requests
+
         if ("OPTIONS".equalsIgnoreCase(httpRequest.getMethod())) {
             httpResponse.setStatus(HttpServletResponse.SC_OK);
             return;
         }
 
-        // Continue with the filter chain
         chain.doFilter(request, response);
-    }
-
-    @Override
-    public void destroy() {
-        // Cleanup logic (if needed)
     }
 }

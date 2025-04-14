@@ -10,6 +10,9 @@ public class WicketApplication extends WebApplication {
     protected void init() {
         super.init();
 
+        getServletContext().addFilter("CORSFilter", new CorsFilter())
+            .addMappingForUrlPatterns(null, false, "/*");
+
         // Mount the frontend page for client-side routing
         mountPage("/front-end/*", FrontendPage.class);
 

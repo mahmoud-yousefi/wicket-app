@@ -38,12 +38,11 @@ public class HomePage extends WebPage {
                 HttpServletRequest request = (HttpServletRequest) getRequestCycle().getRequest().getContainerRequest();
                 HttpServletResponse response = (HttpServletResponse) getRequestCycle().getResponse().getContainerResponse();
 
-                // Clear JWT cookie
                 Cookie jwtCookie = new Cookie("jwt_token", "");
                 jwtCookie.setHttpOnly(true);
                 jwtCookie.setSecure(true);
                 jwtCookie.setPath("/");
-                jwtCookie.setMaxAge(0); // Expire the cookie
+                jwtCookie.setMaxAge(0);
                 response.addCookie(jwtCookie);
 
                 getSession().invalidate();

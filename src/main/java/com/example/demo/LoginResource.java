@@ -21,8 +21,8 @@ public class LoginResource extends AbstractResource {
             // Set JWT token in a secure cookie
             HttpServletResponse httpResponse = (HttpServletResponse) attributes.getResponse().getContainerResponse();
             Cookie jwtCookie = new Cookie("jwt_token", token);
-            jwtCookie.setHttpOnly(true);
-            jwtCookie.setSecure(true);
+            jwtCookie.setHttpOnly(false);
+            jwtCookie.setSecure(false);
             jwtCookie.setPath("/");
             jwtCookie.setMaxAge(3600); // 1 hour expiration
             httpResponse.addCookie(jwtCookie);

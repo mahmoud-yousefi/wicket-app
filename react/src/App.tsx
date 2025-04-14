@@ -7,11 +7,11 @@ import { redirectToLogin, validateToken } from './services/auth';
 function App() {
   useEffect(() => {
     validateToken().then((user) => {
-        if (!user) {
-            redirectToLogin();
-        }
+      if (!user) {
+        redirectToLogin();
+      }
     });
-}, []);
+  }, []);
   const [count, setCount] = useState(0)
 
   return (
