@@ -34,3 +34,4 @@ local.properties
 *.lock
 
 react/node_modules
+react/dist

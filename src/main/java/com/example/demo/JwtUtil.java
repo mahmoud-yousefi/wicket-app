@@ -9,7 +9,7 @@ import com.auth0.jwt.interfaces.DecodedJWT;
 
 public class JwtUtil {
 
-    private static final String SECRET_KEY = "your-secret-key";
+    private static final String SECRET_KEY = "secret";
     private static final long EXPIRATION_TIME = 3600 * 1000;
 
     public static String generateToken(String username) {
@@ -17,7 +17,7 @@ public class JwtUtil {
                 .withSubject(username)
                 .withIssuedAt(new Date())
                 .withExpiresAt(new Date(System.currentTimeMillis() + EXPIRATION_TIME))
-                .sign(Algorithm.HMAC256(SECRET_KEY)); 
+                .sign(Algorithm.HMAC256(SECRET_KEY));
     }
 
     public static boolean validateToken(String token) {
@@ -40,7 +40,7 @@ public class JwtUtil {
 
             return decodedJWT.getSubject();
         } catch (JWTVerificationException e) {
-            return null; 
+            return null;
         }
     }
 }
