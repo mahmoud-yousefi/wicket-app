@@ -35,7 +35,6 @@ public class HomePage extends WebPage {
         Form<Void> logoutForm = new Form<>("logoutForm") {
             @Override
             protected void onSubmit() {
-                HttpServletRequest request = (HttpServletRequest) getRequestCycle().getRequest().getContainerRequest();
                 HttpServletResponse response = (HttpServletResponse) getRequestCycle().getResponse().getContainerResponse();
 
                 Cookie jwtCookie = new Cookie("jwt_token", "");
