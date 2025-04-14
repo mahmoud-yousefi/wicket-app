@@ -17,3 +17,9 @@
    ```
    http://localhost:8080/wicket-app
    ```
+
+   To see front-end using Reacr, navigate to:
+   ```
+   http://localhost:8080/wicket-app/front-end
+
+   ```
