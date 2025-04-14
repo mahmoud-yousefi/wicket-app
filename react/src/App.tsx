@@ -1,43 +1,36 @@
-import { useEffect, useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
-import { redirectToLogin, validateToken } from './services/auth';
+import { useEffect } from 'react';
+import reactLogo from './assets/react.svg';
+import viteLogo from '/vite.svg';
+import './App.css';
+import { redirectToLogin, validateToken, logout } from './services/auth';
+import { getCookie } from './utils';
 
 function App() {
-  useEffect(() => {
-    validateToken().then((user) => {
-      if (!user) {
-        redirectToLogin();
-      }
-    });
-  }, []);
-  const [count, setCount] = useState(0)
+    const jwt_token = getCookie('jwt_token');
 
-  return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    useEffect(() => {
+        validateToken().then((user) => {
+            if (!user || !jwt_token) {
+                redirectToLogin();
+            }
+        });
+    }, []);
+
+    return (
+        <>
+            <div>
+                <a href="https://vite.dev" target="_blank">
+                    <img src={viteLogo} className="logo" alt="Vite logo" />
+                </a>
+                <a href="https://react.dev" target="_blank">
+                    <img src={reactLogo} className="logo react" alt="React logo" />
+                </a>
+            </div>
+            <h1>Vite + React</h1>
+            <button onClick={logout}>Logout</button> {/* Add a logout button */}
+            <p>Welcome to the app!</p>
+        </>
+    );
 }
 
-export default App
+export default App;

@@ -17,31 +17,27 @@ public class LoginPage extends WebPage {
         Form<Void> loginForm = new Form<>("loginForm") {
             @Override
             protected void onSubmit() {
-                // Validate credentials (hardcoded for simplicity)
                 if ("admin".equals(username) && "password".equals(password)) {
-                    // Generate JWT token
                     String token = JwtUtil.generateToken(username);
 
-                    // Store token in a secure cookie
                     HttpServletResponse response = (HttpServletResponse) getRequestCycle().getResponse().getContainerResponse();
                     Cookie jwtCookie = new Cookie("jwt_token", token);
-                    jwtCookie.setHttpOnly(true); // Prevent JavaScript access
-                    jwtCookie.setSecure(true);   // Only send over HTTPS
-                    jwtCookie.setPath("/");      // Available across the entire domain
-                    jwtCookie.setMaxAge(3600);   // 1 hour expiration
+                    jwtCookie.setHttpOnly(false);
+                    jwtCookie.setSecure(false);
+                    jwtCookie.setPath("/");
+                    jwtCookie.setMaxAge(3600);
                     response.addCookie(jwtCookie);
 
-                    setResponsePage(HomePage.class); // Redirect to home page
+                    setResponsePage(HomePage.class);
                 } else {
-                    error("Invalid credentials"); // Display error message
+                    error("Invalid credentials");
                 }
             }
         };
 
-        // Add form fields
         loginForm.add(new TextField<>("username", new PropertyModel<>(this, "username")));
         loginForm.add(new PasswordTextField("password", new PropertyModel<>(this, "password")));
 
-        add(loginForm); // Add form to the page
+        add(loginForm);
     }
 }

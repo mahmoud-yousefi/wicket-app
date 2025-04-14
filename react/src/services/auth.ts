@@ -17,6 +17,11 @@ export const validateToken = async () => {
     }
 };
 
+export const logout = () => {
+    document.cookie = "jwt_token=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;";
+    redirectToLogin();
+};
+
 export const redirectToLogin = () => {
     window.location.href = 'http://localhost:8080/wicket-app/login';
 };
