@@ -5,19 +5,19 @@
         <init-param>
             <param-name>applicationClassName</param-name>
             <param-value>com.example.demo.WicketApplication</param-value>
+            
         </init-param>
     </filter>
-    <filter-mapping>
-        <filter-name>wicket.filter</filter-name>
-        <url-pattern>/*</url-pattern>
-    </filter-mapping>
-
     <filter>
-        <filter-name>CspFilter</filter-name>
-        <filter-class>com.example.demo.CspFilter</filter-class>
+        <filter-name>CorsFilter</filter-name>
+        <filter-class>com.example.demo.CorsFilter</filter-class>
     </filter>
     <filter-mapping>
-        <filter-name>CspFilter</filter-name>
+        <filter-name>CorsFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>wicket.filter</filter-name>
         <url-pattern>/*</url-pattern>
     </filter-mapping>
 
@@ -27,15 +27,6 @@
     </context-param>
 
     <session-config>
-        <session-timeout>30</session-timeout> <!-- Timeout in minutes -->
+        <session-timeout>30</session-timeout>
     </session-config>
-
-    <error-page>
-        <error-code>404</error-code>
-        <location>/error-pages/404.html</location>
-    </error-page>
-    <error-page>
-        <error-code>500</error-code>
-        <location>/error-pages/500.html</location>
-    </error-page>
 </web-app>

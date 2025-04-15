@@ -32,3 +32,6 @@ local.properties
 # Miscellaneous
 *.pid
 *.lock
+
+react/node_modules
+react/dist
